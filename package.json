@@ -1,0 +1,13 @@
+{
+  "name": "lobano",
+  "version": "0.1.0",
+  "description": "location based node application",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.10.2",
+    "socket.io": "~1.2.0"
+  },
+  "devDependencies": {},
+  "author": "Casey Justus",
+  "license": "MIT"
+}
