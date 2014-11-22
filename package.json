@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "express": "~4.10.2",
-    "socket.io": "~1.2.0"
+    "socket.io": "~1.2.0",
+    "geodesy-libraries": "git://github.com/chrisveness/geodesy"
   },
   "devDependencies": {},
   "author": "Casey Justus",

@@ -33,38 +33,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script>
-$( document ).ready(function() {
-
-	var watchID = navigator.geolocation.watchPosition( function(position) {
-		socket.emit('watchPosition', position.coords);
-
-	});
-/*
-
-	navigator.compass.getCurrentHeading(function (heading){
-		console.log(heading);
-	});
-*/
-
-	navigator.geolocation.getCurrentPosition(function(position) {
-
-  		console.log(position);
-  		$('#mine p.position').text(position);
-
-		socket.emit('getPosition', position.coords);
-
-	});
-
-	var socket = io.connect('http://localhost');
-
-	socket.on('friendsPosition', function (data) {
-
-		console.log(data);
-
-	});
-
-});
-</script>
+<script src="/js/latlon.js"></script>
+<script src="/js/lobano.js"></script>
 </body>
 <html>
