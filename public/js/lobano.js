@@ -1,17 +1,27 @@
-$( document ).ready(function() {
 
-	var watchID = navigator.geolocation.watchPosition( function(position) {
-		socket.emit('watchPosition', position.coords);
 
-	});
+var myKey = 42
+
+
+
+var watchID = navigator.geolocation.watchPosition( function(position) {
+
+	position.key = myKey;
+
+	socket.emit('watchPosition', position);
+
+	//console.log('position changed');
+	//console.log(position);
+
+});
+
 
 /*
-
 	navigator.compass.getCurrentHeading(function (heading){
 		console.log(heading);
 	});
 */
-
+/*
 	navigator.geolocation.getCurrentPosition(function(position) {
 
   		console.log(position);
@@ -20,13 +30,13 @@ $( document ).ready(function() {
 		socket.emit('getPosition', position.coords);
 
 	});
+*/
 
-	var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://localhost:3000');
 
-	socket.on('friendsPosition', function (data) {
+socket.on('watchGroup', function (data) {
 
-		console.log(data);
-
-	});
+	console.log(data);
 
 });
+
