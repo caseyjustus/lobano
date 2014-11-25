@@ -6,14 +6,19 @@ var _ = require('underscore');
 
 server.listen(3000);
 
+// these should be hosted elsewhere
 app.get('/kid-a/', function (req, res) {
     res.sendFile(__dirname + '/public/example/kid-a.html');
 });
-
 app.get('/kid-b/', function (req, res) {
     res.sendFile(__dirname + '/public/example/kid-b.html');
 });
+app.get('/kid-c/', function (req, res) {
+    res.sendFile(__dirname + '/public/example/kid-c.html');
+});
 
+
+// should these be hosted here or thru implementation?
 app.get('/js/lobano.js', function (req, res) {
     res.sendFile(__dirname + '/public/js/lobano.js');
 });
@@ -24,9 +29,19 @@ app.get('/js/latlon.js', function (req, res) {
 
 //console.log(expool);
 
-//app.use(express.static(__dirname + '/public'));
 
-var pool = [{key:'Kid A'}, {key:'Kid B'}];
+
+// need to move into api
+// individual keys need to be accessible directly from client 
+// interfaces need to be data storage agnostic
+
+var pool = [
+        {key:'Kid A'},
+        {key:'Kid B'},
+        {key:'Kid C'}
+    ];
+
+
 
 io.sockets.on('connection', function (socket) {
 

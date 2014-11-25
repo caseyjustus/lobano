@@ -9,10 +9,8 @@ var lobano = function(options){
 		socket.emit('watchPosition', position);
 
 		console.log('position changed');
-		//console.log(position);
 
 	});
-
 
 	/*
 		navigator.compass.getCurrentHeading(function (heading){
@@ -33,11 +31,31 @@ var lobano = function(options){
 	var socket = io.connect('http://localhost:3000');
 
 	socket.on('watchGroup', function (data) {
-	
 		if (  data !== undefined && options.success){
-			return options.success(data);
-		}
+			var output = [];
 
+			function removeSelf(el, i){
+				if (el.key == options.myKey){
+
+					output.push({myPosition: el});
+
+					data.splice(i, 1);
+
+					
+
+				}
+			}
+
+			data.forEach(removeSelf);
+
+			output.push({positions: data});
+
+
+			return options.success(output);
+
+		}else{
+			return options.error('error handler');
+		}
 	});
 };
 
