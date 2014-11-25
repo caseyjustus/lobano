@@ -8,13 +8,13 @@
 <body>
 
 	<h1>location based node app</h1>
+	<h2>kid a</h2>
 
 	<h3 id="target">target loading...</h3>
 
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 
 
 <script src="/socket.io/socket.io.js"></script>
@@ -24,7 +24,11 @@
 
 lobano({
 	myKey: "Kid A",
-	groupKey: "someGroup"
+	groupKey: "someGroup",
+	success: function(stuff){
+		console.log('suceess');
+		console.log(stuff);		
+	}
 });
 
 
