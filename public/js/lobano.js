@@ -1,14 +1,16 @@
 
 var lobano = function(options){
 
+	var output = new Object;
+
 	navigator.geolocation.watchPosition( function(position) {
 
 		position.key = options.myKey;
 		position.groupKey = options.groupKey;
 
-		socket.emit('watchPosition', position);
+		output.myPosition = position;
 
-		console.log('position changed');
+		socket.emit('watchPosition', position);
 
 	});
 
@@ -28,33 +30,50 @@ var lobano = function(options){
 		});
 	*/
 
+
+
 	var socket = io.connect('http://localhost:3000');
 
 	socket.on('watchGroup', function (data) {
+		
 		if (  data !== undefined && options.success){
-			var output = [];
 
-			function removeSelf(el, i){
+			var myIndex;
+
+			function setPositions(el, i){
+
 				if (el.key == options.myKey){
 
-					output.push({myPosition: el});
-
-					data.splice(i, 1);
-
+					myIndex = i;
 					
 
+				}else{
+					if (el.timestamp){
+
+						var myLatLon = new LatLon(output.myPosition.coords.latitude, output.myPosition.coords.longitude);
+
+						var otherLatLon = new LatLon(el.coords.latitude, el.coords.longitude);
+
+						data[i].coords.distance = myLatLon.distanceTo(otherLatLon);	
+
+						data[i].coords.direction = myLatLon.bearingTo(otherLatLon);	
+											
+					}
 				}
 			}
 
-			data.forEach(removeSelf);
+			data.forEach(setPositions);
 
-			output.push({positions: data});
+			data.splice(myIndex, 1);
 
+			output.groupPositions = data;
 
 			return options.success(output);
 
 		}else{
+
 			return options.error('error handler');
+
 		}
 	});
 };

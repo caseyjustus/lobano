@@ -37,7 +37,14 @@ app.get('/js/latlon.js', function (req, res) {
 
 var pool = [
         {key:'Kid A'},
-        {key:'Kid B'},
+        {
+            key:'Kid B',
+            coords: {
+                latitude: 39.0816179,
+                longitude: -94.5795273
+            },
+            timestamp: 1
+        },
         {key:'Kid C'}
     ];
 
@@ -46,8 +53,9 @@ var pool = [
 io.sockets.on('connection', function (socket) {
 
     socket.on('watchPosition', function (data) {
-        console.log('watchPosition');
-        console.log(data);
+        console.log(data.key);
+
+        
 
         var keys = _.pluck(pool, 'key');
         var index = _.indexOf(keys, data.key);
