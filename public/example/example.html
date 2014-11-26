@@ -1,0 +1,53 @@
+<html ng-app="exampleApp">
+<head>
+	<style>
+		body{ background-color: #000; color:#0f0; font-family: monospace;}
+		p{ margin:0;}
+	</style>
+
+	<!--script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script-->
+
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/latlon.js"></script>
+	<script src="/js/lobano.js"></script>
+
+	<script>
+	/*
+		angular.module('exampleApp', [])
+  		.controller('lobanoCtrl', ['$scope', function($scope) {
+    		$scope.pool = [
+      			{key:'one'},
+      			{key:'two'}];
+
+      		$scope.pickUser = function(key){
+      			console.log(key);
+      		}
+   		}]);
+*/
+		lobano({
+			myKey: "kid-a",
+			groupKey: "someGroup",
+			success: function(stuff){
+				console.log('suceess');
+				console.log(stuff);		
+			}
+		});
+
+	</script>
+</head>
+
+<body >
+
+	<div ng-controller="lobanoCtrl">
+		<h1>location based node app</h1>
+		<h2>users</h2>
+		
+		<div ng-repeat="user in pool">
+			<h3 ng-click="pickUser(user.key)">{{user.key}}</h3>
+		</div>
+
+	</div>
+
+</body>
+<html>

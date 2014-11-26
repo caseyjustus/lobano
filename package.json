@@ -7,7 +7,8 @@
     "express": "~4.10.2",
     "socket.io": "~1.2.0",
     "geodesy-libraries": "git://github.com/chrisveness/geodesy",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "request": "~2.48.0"
   },
   "devDependencies": {},
   "author": "Casey Justus",

@@ -46,22 +46,20 @@ var lobano = function(options){
 
 					myIndex = i;
 					
-
 				}else{
+
 					if (el.timestamp){
 
 						var myLatLon = new LatLon(output.myPosition.coords.latitude, output.myPosition.coords.longitude);
-
 						var otherLatLon = new LatLon(el.coords.latitude, el.coords.longitude);
 
 						data[i].coords.distance = myLatLon.distanceTo(otherLatLon);	
-
 						data[i].coords.direction = myLatLon.bearingTo(otherLatLon);	
 											
 					}
 				}
 			}
-
+			console.log(data);
 			data.forEach(setPositions);
 
 			data.splice(myIndex, 1);
