@@ -1,0 +1,37 @@
+<html ng-app="exampleApp">
+<head>
+	<style>
+		body{ background-color: #000; color:#0f0; font-family: monospace;}
+		p{ margin:0;}
+	</style>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/latlon.js"></script>
+	<script src="/js/lobano.js"></script>
+
+	<script>
+	
+		lobano({
+			myKey: "kid-a",
+			groupKey: "someGroup",
+			success: function(data){
+				
+				console.log(data);
+				
+			}
+		});
+
+
+
+
+	</script>
+</head>
+
+<body >
+
+
+	<h1>location based node app - console</h1>
+		
+
+</body>
+<html>

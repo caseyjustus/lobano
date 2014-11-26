@@ -1,0 +1,65 @@
+<html ng-app="exampleApp">
+<head>
+	<style>
+		body{ background-color: #000; color:#0f0; font-family: monospace;}
+		p{ margin:0;}
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/latlon.js"></script>
+	<script src="/js/lobano.js"></script>
+
+	<script>
+
+		$.getJSON( "/api", function( json ) {
+			$.each(json, function(index, value){
+				$('#userTarget').append('<h4 class="user">' + value.key + '</h4>');		
+			});	
+
+			$( "h4.user" ).click(function() {
+				lobano({
+					myKey: $(this).text(),
+					groupKey: "someGroup",
+					success: function(data){
+
+						$('#target').empty();
+						$.each(data.groupPositions, function(index, value){
+							
+							if (value.coords){
+								$('#target').append('<h3>' + value.key + '<br />' +
+									value.coords.direction + ' degrees<br />   ' +
+									value.coords.distance + ' km<h3>');						
+							}			
+						});				
+					}
+				});
+
+				$('#userTarget').empty();
+				
+			});
+		});
+
+	</script>
+</head>
+
+<body >
+
+	<div>
+		<h1>location based node app</h1>
+
+		<h2 id="userTarget">user list</h2>
+
+		
+
+		<div id="target">
+			
+		</div>
+
+	</div>
+
+
+
+</body>
+<html>

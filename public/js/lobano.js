@@ -48,7 +48,7 @@ var lobano = function(options){
 					
 				}else{
 
-					if (el.timestamp){
+					if (el.coords){
 
 						var myLatLon = new LatLon(output.myPosition.coords.latitude, output.myPosition.coords.longitude);
 						var otherLatLon = new LatLon(el.coords.latitude, el.coords.longitude);
@@ -59,13 +59,14 @@ var lobano = function(options){
 					}
 				}
 			}
-			console.log(data);
+			
 			data.forEach(setPositions);
 
 			data.splice(myIndex, 1);
 
 			output.groupPositions = data;
 
+			//return output;
 			return options.success(output);
 
 		}else{

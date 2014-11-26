@@ -1,6 +1,10 @@
 [
     {
-        "key": "kid-a"
+        "key": "kid-a",
+        "coords": {
+        	"latitude": 52,
+        	"longitude": 0
+        }
     },
     {
         "key": "chas"

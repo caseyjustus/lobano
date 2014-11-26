@@ -11,13 +11,19 @@ server.listen(3000);
 
 
 //could be hosted elsewhere
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/public/example/example.html');
+app.get('/angularExample', function (req, res) {
+    res.sendFile(__dirname + '/public/examples/angularExample.html');
+});
+app.get('/jqueryExample', function (req, res) {
+    res.sendFile(__dirname + '/public/examples/jqueryExample.html');
+});
+app.get('/consoleExample', function (req, res) {
+    res.sendFile(__dirname + '/public/examples/consoleExample.html');
 });
 
 //TODO make actual api
-app.get('/api/', function (req, res) {
-    res.sendFile(__dirname + '/public/example/pool.json');
+app.get('/api', function (req, res) {
+    res.sendFile(__dirname + '/public/examples/pool.json');
 });
 
 
@@ -80,7 +86,7 @@ request('/public/example/pool.json', function (error, response, body) {
 })
 */
 
-fs.readFile(__dirname + '/public/example/pool.json', 'utf8', function (err, data) {
+fs.readFile(__dirname + '/public/examples/pool.json', 'utf8', function (err, data) {
   if (err) throw err;
 
   activateWatchSocket( JSON.parse(data) );
