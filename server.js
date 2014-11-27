@@ -5,8 +5,6 @@ var _ = require('underscore');
 var fs = require('fs');
 
 
-
-
 server.listen(3000);
 
 
@@ -20,6 +18,8 @@ app.get('/jqueryExample', function (req, res) {
 app.get('/consoleExample', function (req, res) {
     res.sendFile(__dirname + '/public/examples/consoleExample.html');
 });
+
+
 
 //TODO make actual api
 app.get('/api', function (req, res) {

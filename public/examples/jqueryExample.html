@@ -30,14 +30,13 @@
 							if (value.coords){
 								$('#target').append('<h3>' + value.key + '<br />' +
 									value.coords.direction + ' degrees<br />   ' +
-									value.coords.distance + ' km<h3>');						
+									(value.coords.distance*1000) + ' meters<h3>');						
 							}			
-						});				
+						});		
+
+						$('#userTarget').html('Hello ' + data.myPosition.key + '. Here are the locations of everyone on the node.');
 					}
 				});
-
-				$('#userTarget').empty();
-				
 			});
 		});
 
@@ -47,7 +46,7 @@
 <body >
 
 	<div>
-		<h1>location based node app</h1>
+		<h1>location based node app - jquery</h1>
 
 		<h2 id="userTarget">user list</h2>
 
