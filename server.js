@@ -18,7 +18,9 @@ app.get('/jqueryExample', function (req, res) {
 app.get('/consoleExample', function (req, res) {
     res.sendFile(__dirname + '/public/examples/consoleExample.html');
 });
-
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 
 //TODO make actual api
