@@ -1,6 +1,13 @@
 {
   "name": "lobano",
-  "version": "0.1.0",
+  "subdomain": "lobano",
+  "version": "0.2.0-2",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
   "description": "location based node application",
   "main": "server.js",
   "dependencies": {
