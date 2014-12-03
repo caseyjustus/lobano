@@ -3,7 +3,7 @@ lobano
 
 Location Based Node App Framework
 
-Lobano is a foundation for location aware applications. It websockets and geolocation to share locations with a group of users. It also calculates distance and direction relative to the user.
+Lobano is a foundation for location aware applications. It uses websockets and geolocation to securely share locations with a group of users. It also calculates the distances and directions relative to the user.
 
 npm install lobano
 
