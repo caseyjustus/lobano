@@ -19,6 +19,7 @@ var lobano = function(options){
 			console.log(heading);
 		});
 	*/
+
 	/*
 		navigator.geolocation.getCurrentPosition(function(position) {
 
@@ -66,7 +67,6 @@ var lobano = function(options){
 
 			output.groupPositions = data;
 
-			//return output;
 			return options.success(output);
 
 		}else{
